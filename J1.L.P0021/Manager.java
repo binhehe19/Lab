@@ -22,7 +22,7 @@ public class Manager {
             System.out.println("Student added successfully!");
 
             if (studentList.size() < 10) {
-                System.out.println("Note: You need to create at least 10 students. Current total: " + studentList.size());
+                System.out.println("You need to create at least 10 students. Current total: " + studentList.size());
             } else {
                 if (!Utility.getYesNo("Do you want to continue")) {
                     break;
@@ -54,10 +54,8 @@ public class Manager {
         Collections.sort(matchedList);
 
         System.out.println("\n--- Found & Sorted Students ---");
-        System.out.printf("%-10s | %-20s | %-10s | %-10s\n", "ID", "Student Name", "Semester", "Course Name");
-        System.out.println("-----------------------------------------------------------------");
         for (Student st : matchedList) {
-            st.print();
+            System.out.println(st.getName() + " | " + st.getSemester() + " | " + st.getCourse());
         }
         System.out.println();
     }
@@ -84,7 +82,7 @@ public class Manager {
 
         System.out.println("Found student(s):");
         for (Student st : foundStudents) {
-            st.print();
+            System.out.println(st.getId() + " | " + st.getName() + " | " + st.getSemester() + " | " + st.getCourse());
         }
 
         while (true) {
@@ -124,12 +122,10 @@ public class Manager {
             reportMap.put(key, reportMap.getOrDefault(key, 0) + 1);
         }
 
-        System.out.println("\n--- Student Report ---");
-        System.out.printf("%-20s | %-10s | %-15s\n", "Student Name", "Course", "Total of Course");
-        System.out.println("-----------------------------------------------------");
+        System.out.println("\n--- Report ---");
         for (Map.Entry<String, Integer> entry : reportMap.entrySet()) {
             String[] parts = entry.getKey().split("\\|");
-            System.out.printf("%-20s | %-10s | %-15d\n", parts[0], parts[1], entry.getValue());
+            System.out.println(parts[0] + " | " + parts[1] + " | " + entry.getValue());
         }
         System.out.println();
     }
