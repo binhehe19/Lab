@@ -1,3 +1,5 @@
+package model;
+
 public class Student implements Comparable<Student> {
     private int id;
     private String name;
@@ -44,10 +46,6 @@ public class Student implements Comparable<Student> {
 
     public void setCourse(String course) {
         this.course = course;
-    }
-
-    public void print() {
-        System.out.printf("%-10d | %-20s | %-10d | %-10s\n", id, name, semester, course);
     }
 
     @Override
