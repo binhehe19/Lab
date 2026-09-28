@@ -32,19 +32,27 @@ public class StudentController {
         view.showMessage("--- Create New Student ---");
         while (true) {
             int id = view.getInt("Enter student ID: ", 1, Integer.MAX_VALUE);
-            String name = view.getString("Enter student name: ", false);
-            int semester = view.getInt("Enter semester: ", 1, 10);
+            List<Student> existing = model.findById(id);
+            String name;
+            if (existing.isEmpty()) {
+                name = view.getString("Enter student name: ");
+            } else {
+                name = existing.get(0).getName();
+                view.showMessage("Adding a course for: " + name);
+            }
+            int semester = view.getInt("Enter semester: ", 1, Integer.MAX_VALUE);
             String course = view.getCourse("Enter course (Java, .Net, C/C++): ");
 
-            model.add(new Student(id, name, semester, course));
+            if (!model.add(new Student(id, name, semester, course))) {
+                view.showMessage("This student already has this course in this semester.");
+                continue;
+            }
             view.showMessage("Student added successfully!");
 
             if (model.size() < 10) {
                 view.showMessage("You need to create at least 10 students. Current total: " + model.size());
-            } else {
-                if (!view.getYesNo("Do you want to continue")) {
-                    break;
-                }
+            } else if (!view.getYesNo("Do you want to continue")) {
+                break;
             }
         }
     }
@@ -55,7 +63,7 @@ public class StudentController {
             return;
         }
 
-        String keyword = view.getString("Enter student name to find: ", false).toLowerCase();
+        String keyword = view.getString("Enter student name to find: ");
         List<Student> matchedList = model.findAndSort(keyword);
 
         if (matchedList.isEmpty()) {
@@ -81,22 +89,29 @@ public class StudentController {
         }
 
         view.showStudents(foundStudents);
+        int index = 0;
+        if (foundStudents.size() > 1) {
+            index = view.getInt("Select record number: ", 1, foundStudents.size()) - 1;
+        }
+        Student selected = foundStudents.get(index);
 
         while (true) {
-            String choice = view.getString("Do you want to update (U) or delete (D) student? ", false);
+            String choice = view.getString("Do you want to update (U) or delete (D) student? ");
             if (choice.equalsIgnoreCase("U")) {
-                for (Student st : foundStudents) {
-                    view.showMessage("Updating student ID: " + st.getId());
-                    String newName = view.getString("Enter new name: ", false);
-                    int newSemester = view.getInt("Enter new semester: ", 1, 10);
-                    String newCourse = view.getCourse("Enter new course (Java, .Net, C/C++): ");
+                view.showMessage("Updating student ID: " + selected.getId());
+                view.showMessage("Name changes apply to all records with this ID.");
+                String newName = view.getString("Enter new name: ");
+                int newSemester = view.getInt("Enter new semester: ", 1, Integer.MAX_VALUE);
+                String newCourse = view.getCourse("Enter new course (Java, .Net, C/C++): ");
 
-                    model.update(st, newName, newSemester, newCourse);
+                if (model.update(selected, newName, newSemester, newCourse)) {
+                    view.showMessage("Updated student successfully!");
+                } else {
+                    view.showMessage("Update failed: this course already exists in this semester.");
                 }
-                view.showMessage("Updated student successfully!");
                 break;
             } else if (choice.equalsIgnoreCase("D")) {
-                model.delete(foundStudents);
+                model.delete(selected);
                 view.showMessage("Deleted student successfully!");
                 break;
             } else {

@@ -5,11 +5,11 @@ import java.util.Scanner;
 public class Utility {
     private static final Scanner sc = new Scanner(System.in);
 
-    public static String getString(String msg, boolean isEmpty) {
+    public static String getString(String msg) {
         while (true) {
             System.out.print(msg);
             String s = sc.nextLine().trim();
-            if (isEmpty || !s.isEmpty()) {
+            if (!s.isEmpty()) {
                 return s;
             }
             System.out.println("Input cannot be empty! Please enter again.");
@@ -18,9 +18,8 @@ public class Utility {
 
     public static int getInt(String msg, int min, int max) {
         while (true) {
-            System.out.print(msg);
             try {
-                int val = Integer.parseInt(sc.nextLine().trim());
+                int val = Integer.parseInt(getString(msg));
                 if (val >= min && val <= max) {
                     return val;
                 }
@@ -33,8 +32,7 @@ public class Utility {
 
     public static boolean getYesNo(String msg) {
         while (true) {
-            System.out.print(msg + " (Y/N)? ");
-            String choice = sc.nextLine().trim();
+            String choice = getString(msg + " (Y/N)? ");
             if (choice.equalsIgnoreCase("Y")) {
                 return true;
             }
@@ -47,13 +45,10 @@ public class Utility {
 
     public static String getCourse(String msg) {
         while (true) {
-            System.out.print(msg);
-            String course = sc.nextLine().trim();
-            if (course.equalsIgnoreCase("Java") || 
-                course.equalsIgnoreCase(".Net") || 
-                course.equalsIgnoreCase("C/C++")) {
-                return course;
-            }
+            String course = getString(msg);
+            if (course.equalsIgnoreCase("Java")) return "Java";
+            if (course.equalsIgnoreCase(".Net")) return ".Net";
+            if (course.equalsIgnoreCase("C/C++")) return "C/C++";
             System.out.println("Course must be Java, .Net, or C/C++!");
         }
     }

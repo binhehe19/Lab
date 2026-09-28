@@ -1,29 +1,23 @@
 package view;
 
 import java.util.List;
-import java.util.Map;
+import model.Report;
 import model.Student;
 
 public class StudentView {
-    private final Menu menu = new Menu();
-
-    public StudentView() {
-        menu.add("1. Create");
-        menu.add("2. Find and Sort");
-        menu.add("3. Update/Delete");
-        menu.add("4. Report");
-        menu.add("5. Exit");
-    }
-
     public int showMenu() {
         showMessage("WELCOME TO STUDENT MANAGEMENT");
-        menu.print();
-        return menu.getUserChoices();
+        showMessage("1. Create");
+        showMessage("2. Find and Sort");
+        showMessage("3. Update/Delete");
+        showMessage("4. Report");
+        showMessage("5. Exit");
+        return getInt("Please choose (1-5): ", 1, 5);
     }
 
     public void showMessage(String message) { System.out.println(message); }
-    public String getString(String message, boolean allowEmpty) {
-        return Utility.getString(message, allowEmpty);
+    public String getString(String message) {
+        return Utility.getString(message);
     }
     public int getInt(String message, int min, int max) {
         return Utility.getInt(message, min, max);
@@ -41,17 +35,18 @@ public class StudentView {
 
     public void showStudents(List<Student> students) {
         showMessage("Found student(s):");
-        for (Student student : students) {
-            System.out.printf("%-10d | %-20s | %-10d | %-10s%n",
-                    student.getId(), student.getName(), student.getSemester(), student.getCourse());
+        showMessage("No. | ID | Name | Semester | Course");
+        for (int i = 0; i < students.size(); i++) {
+            Student student = students.get(i);
+            System.out.printf("%d | %d | %s | %d | %s%n",
+                    i + 1, student.getId(), student.getName(), student.getSemester(), student.getCourse());
         }
     }
 
-    public void showReport(Map<String, Integer> report) {
+    public void showReport(List<Report> report) {
         showMessage("\n--- Report ---");
-        for (Map.Entry<String, Integer> entry : report.entrySet()) {
-            String[] parts = entry.getKey().split("\\|");
-            System.out.println(parts[0] + " | " + parts[1] + " | " + entry.getValue());
+        for (Report row : report) {
+            System.out.println(row.getStudentName() + " | " + row.getCourse() + " | " + row.getTotal());
         }
         System.out.println();
     }

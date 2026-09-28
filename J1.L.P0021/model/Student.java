@@ -1,6 +1,7 @@
 package model;
 
-public class Student implements Comparable<Student> {
+// Each object represents one student's course in one semester.
+public class Student {
     private int id;
     private String name;
     private int semester;
@@ -48,8 +49,4 @@ public class Student implements Comparable<Student> {
         this.course = course;
     }
 
-    @Override
-    public int compareTo(Student o) {
-        return this.name.compareToIgnoreCase(o.name);
-    }
 }
