@@ -9,11 +9,19 @@ public class StudentController {
     private final StudentManager model;
     private final StudentView view;
 
+    /**
+     * Khởi tạo đối tượng StudentController với thông tin được cung cấp.
+     * @param model đối tượng quản lý dữ liệu
+     * @param view đối tượng giao diện nhập và xuất
+     */
     public StudentController(StudentManager model, StudentView view) {
         this.model = model;
         this.view = view;
     }
 
+    /**
+     * Hiển thị menu và xử lý chức năng được chọn cho đến khi thoát.
+     */
     public void run() {
         while (true) {
             switch (view.showMenu()) {
@@ -28,6 +36,9 @@ public class StudentController {
         }
     }
 
+    /**
+     * Nhập và thêm bản ghi sinh viên; yêu cầu đủ 10 bản ghi trước khi cho phép dừng.
+     */
     public void createStudent() {
         view.showMessage("--- Create New Student ---");
         while (true) {
@@ -57,6 +68,9 @@ public class StudentController {
         }
     }
 
+    /**
+     * Tìm tên sinh viên theo từ khóa và hiển thị kết quả sắp xếp theo tên.
+     */
     public void findAndSort() {
         if (model.isEmpty()) {
             view.showMessage("Student list is empty!");
@@ -74,6 +88,9 @@ public class StudentController {
         view.showSearchResults(matchedList);
     }
 
+    /**
+     * Tìm sinh viên theo mã, chọn bản ghi và thực hiện cập nhật hoặc xóa.
+     */
     public void updateOrDelete() {
         if (model.isEmpty()) {
             view.showMessage("Student list is empty!");
@@ -120,6 +137,9 @@ public class StudentController {
         }
     }
 
+    /**
+     * Tạo và hiển thị báo cáo tổng số lần đăng ký môn học của từng sinh viên.
+     */
     public void report() {
         if (model.isEmpty()) {
             view.showMessage("Student list is empty!");
