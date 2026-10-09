@@ -29,8 +29,8 @@ public class Report {
      */
     public String getStudentName() { return studentName; }
     /**
-     * Nhập và chuẩn hóa môn học hợp lệ: Java, .Net hoặc C/C++.
-     * @return tên môn học hợp lệ đã được chuẩn hóa
+     * Lấy tên môn học đang được lưu.
+     * @return tên môn học của bản ghi
      */
     public String getCourse() { return course; }
     /**
