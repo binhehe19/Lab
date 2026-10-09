@@ -11,11 +11,19 @@ public class CandidateController {
     private final CandidateManager model;
     private final CandidateView view;
 
+    /**
+     * Khởi tạo đối tượng CandidateController với thông tin được cung cấp.
+     * @param model đối tượng quản lý dữ liệu
+     * @param view đối tượng giao diện nhập và xuất
+     */
     public CandidateController(CandidateManager model, CandidateView view) {
         this.model = model;
         this.view = view;
     }
 
+    /**
+     * Hiển thị menu và xử lý chức năng được chọn cho đến khi thoát.
+     */
     public void run() {
         while (true) {
             int choice = view.showMenu();
@@ -23,7 +31,7 @@ public class CandidateController {
                 case 1:
                 case 2:
                 case 3:
-                    // Menu 1,2,3 tuong ung type 0,1,2.
+                    // Lựa chọn menu 1, 2, 3 tương ứng với loại ứng viên 0, 1, 2.
                     createCandidate(choice - 1);
                     break;
                 case 4:
@@ -36,6 +44,10 @@ public class CandidateController {
         }
     }
 
+    /**
+     * Nhập thông tin chung và riêng, tạo ứng viên theo loại và lưu vào danh sách.
+     * @param type loại ứng viên: 0 là có kinh nghiệm, 1 là mới tốt nghiệp, 2 là thực tập sinh
+     */
     public void createCandidate(int type) {
         do {
             String id;
@@ -45,7 +57,7 @@ public class CandidateController {
                 view.showMessage("This ID already exists!");
             }
 
-            // Buoc 1: Nhap cac thuoc tinh chung.
+            // Bước 1: Nhập các thuộc tính chung của ứng viên.
             String firstName = view.getString("First name: ");
             String lastName = view.getString("Last name: ");
             int birthYear = view.getBirthYear();
@@ -53,7 +65,7 @@ public class CandidateController {
             String phone = view.getPhone();
             String email = view.getEmail();
 
-            // Buoc 2: Nhap thuoc tinh rieng va tao dung lop con.
+            // Bước 2: Nhập thuộc tính riêng và tạo đối tượng thuộc lớp con phù hợp.
             Candidate candidate;
             if (type == 0) {
                 int expInYear = view.getInt("Years of experience: ", 0, 100);
@@ -74,7 +86,7 @@ public class CandidateController {
                         address, phone, email, majors, semester, universityName);
             }
 
-            // Buoc 3: Luu vao Model, hoi tiep tuc.
+            // Bước 3: Lưu ứng viên vào model và hỏi có tiếp tục hay không.
             if (model.add(candidate)) {
                 view.showMessage("Candidate added successfully!");
             } else {
@@ -84,6 +96,9 @@ public class CandidateController {
         view.showCandidates(model.getAll());
     }
 
+    /**
+     * Nhập từ khóa tên và loại ứng viên, sau đó hiển thị kết quả tìm kiếm.
+     */
     public void searchCandidate() {
         view.showCandidates(model.getAll());
         if (model.getAll().isEmpty()) return;

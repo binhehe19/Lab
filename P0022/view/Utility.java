@@ -6,6 +6,11 @@ import java.util.Scanner;
 public class Utility {
     private static final Scanner sc = new Scanner(System.in);
 
+    /**
+     * Nhập chuỗi, loại bỏ khoảng trắng hai đầu và yêu cầu nhập lại nếu rỗng.
+     * @param message thông báo hiển thị hoặc hướng dẫn nhập
+     * @return chuỗi không rỗng đã loại bỏ khoảng trắng hai đầu
+     */
     public static String getString(String message) {
         while (true) {
             System.out.print(message);
@@ -17,6 +22,13 @@ public class Utility {
         }
     }
 
+    /**
+     * Nhập số nguyên và yêu cầu nhập lại cho đến khi nằm trong giới hạn.
+     * @param message thông báo hiển thị hoặc hướng dẫn nhập
+     * @param min giá trị nhỏ nhất được chấp nhận
+     * @param max giá trị lớn nhất được chấp nhận
+     * @return số nguyên trong khoảng từ min đến max, bao gồm hai đầu
+     */
     public static int getInt(String message, int min, int max) {
         while (true) {
             try {
@@ -31,6 +43,13 @@ public class Utility {
         }
     }
 
+    /**
+     * Nhập chuỗi và yêu cầu nhập lại cho đến khi khớp biểu thức chính quy.
+     * @param message thông báo hiển thị hoặc hướng dẫn nhập
+     * @param pattern biểu thức chính quy dùng để kiểm tra dữ liệu
+     * @param error thông báo khi dữ liệu không đúng định dạng
+     * @return chuỗi hợp lệ khớp với pattern
+     */
     public static String getPattern(String message, String pattern, String error) {
         while (true) {
             String value = getString(message);
@@ -41,6 +60,11 @@ public class Utility {
         }
     }
 
+    /**
+     * Nhập năm sinh gồm 4 chữ số, từ 1900 đến năm hiện tại.
+     * @param message thông báo hiển thị hoặc hướng dẫn nhập
+     * @return năm sinh hợp lệ
+     */
     public static int getBirthYear(String message) {
         int currentYear = Year.now().getValue();
         while (true) {
@@ -53,6 +77,11 @@ public class Utility {
         }
     }
 
+    /**
+     * Nhập xếp loại tốt nghiệp: Excellence, Good, Fair hoặc Poor.
+     * @param message thông báo hiển thị hoặc hướng dẫn nhập
+     * @return xếp loại hợp lệ đã được chuẩn hóa
+     */
     public static String getRank(String message) {
         String[] ranks = {"Excellence", "Good", "Fair", "Poor"};
         while (true) {
@@ -66,6 +95,11 @@ public class Utility {
         }
     }
 
+    /**
+     * Nhập lựa chọn Y hoặc N, không phân biệt chữ hoa và chữ thường.
+     * @param message thông báo hiển thị hoặc hướng dẫn nhập
+     * @return true nếu chọn Y; false nếu chọn N
+     */
     public static boolean getYesNo(String message) {
         while (true) {
             String value = getString(message + " (Y/N)? ");
