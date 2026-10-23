@@ -6,7 +6,8 @@ import model.Candidate;
 public class CandidateView {
     /**
      * Hiển thị các chức năng của chương trình và nhận lựa chọn.
-     * @return lựa chọn hợp lệ từ 1 đến 5
+     * EN: Show the menu and get a choice.
+     * @return lựa chọn hợp lệ từ 1 đến 5 / valid choice from 1 to 5
      */
     public int showMenu() {
         showMessage("\nCANDIDATE MANAGEMENT SYSTEM");
@@ -20,43 +21,50 @@ public class CandidateView {
 
     /**
      * In thông báo ra màn hình.
-     * @param message thông báo hiển thị hoặc hướng dẫn nhập
+     * EN: Print a message on the screen.
+     * @param message thông báo hiển thị hoặc hướng dẫn nhập / message or input prompt
      */
     public void showMessage(String message) { System.out.println(message); }
     /**
      * Nhập chuỗi, loại bỏ khoảng trắng hai đầu và yêu cầu nhập lại nếu rỗng.
-     * @param message thông báo hiển thị hoặc hướng dẫn nhập
-     * @return chuỗi không rỗng đã loại bỏ khoảng trắng hai đầu
+     * EN: Read text, remove spaces at both ends and ask again if empty.
+     * @param message thông báo hiển thị hoặc hướng dẫn nhập / message or input prompt
+     * @return chuỗi không rỗng đã loại bỏ khoảng trắng hai đầu / non-empty text with spaces removed at both ends
      */
     public String getString(String message) { return Utility.getString(message); }
     /**
      * Nhập số nguyên và yêu cầu nhập lại cho đến khi nằm trong giới hạn.
-     * @param message thông báo hiển thị hoặc hướng dẫn nhập
-     * @param min giá trị nhỏ nhất được chấp nhận
-     * @param max giá trị lớn nhất được chấp nhận
-     * @return số nguyên trong khoảng từ min đến max, bao gồm hai đầu
+     * EN: Read a whole number. Ask again if it is outside the range.
+     * @param message thông báo hiển thị hoặc hướng dẫn nhập / message or input prompt
+     * @param min giá trị nhỏ nhất được chấp nhận / lowest allowed value
+     * @param max giá trị lớn nhất được chấp nhận / highest allowed value
+     * @return số nguyên trong khoảng từ min đến max, bao gồm hai đầu / whole number from min to max, including both limits
      */
     public int getInt(String message, int min, int max) { return Utility.getInt(message, min, max); }
     /**
      * Nhập năm sinh gồm 4 chữ số, từ 1900 đến năm hiện tại.
-     * @return năm sinh hợp lệ
+     * EN: Read a four-digit birth year from 1900 to the current year.
+     * @return năm sinh hợp lệ / valid birth year
      */
     public int getBirthYear() { return Utility.getBirthYear("Birth year: "); }
     /**
      * Nhập lựa chọn Y hoặc N, không phân biệt chữ hoa và chữ thường.
-     * @param message thông báo hiển thị hoặc hướng dẫn nhập
-     * @return true nếu chọn Y; false nếu chọn N
+     * EN: Read Y or N. Accept both upper and lower case.
+     * @param message thông báo hiển thị hoặc hướng dẫn nhập / message or input prompt
+     * @return true nếu chọn Y; false nếu chọn N / true for Y, false for N
      */
     public boolean getYesNo(String message) { return Utility.getYesNo(message); }
     /**
      * Nhập xếp loại tốt nghiệp: Excellence, Good, Fair hoặc Poor.
-     * @return xếp loại hợp lệ đã được chuẩn hóa
+     * EN: Read a graduation rank: Excellence, Good, Fair or Poor.
+     * @return xếp loại hợp lệ đã được chuẩn hóa / valid rank in the standard spelling
      */
     public String getRank() { return Utility.getRank("Graduation rank: "); }
 
     /**
      * Nhập số điện thoại chỉ gồm chữ số và có ít nhất 10 chữ số.
-     * @return số điện thoại hợp lệ
+     * EN: Read a phone number with at least 10 digits and no other characters.
+     * @return số điện thoại hợp lệ / valid phone number
      */
     public String getPhone() {
         return Utility.getPattern("Phone: ", "[0-9]{10,}", "Phone must have at least 10 digits.");
@@ -64,7 +72,8 @@ public class CandidateView {
 
     /**
      * Nhập địa chỉ email và kiểm tra định dạng bằng biểu thức chính quy.
-     * @return địa chỉ email hợp lệ
+     * EN: Read an email and check its format with a pattern.
+     * @return địa chỉ email hợp lệ / valid email address
      */
     public String getEmail() {
         return Utility.getPattern("Email: ",
@@ -74,7 +83,8 @@ public class CandidateView {
 
     /**
      * Hiển thị tên ứng viên theo từng nhóm: có kinh nghiệm, mới tốt nghiệp và thực tập sinh.
-     * @param candidates danh sách ứng viên cần hiển thị
+     * EN: Show candidate names in three groups: Experience, Fresher and Intern.
+     * @param candidates danh sách ứng viên cần hiển thị / candidate list to show
      */
     public void showCandidates(List<Candidate> candidates) {
         String[] titles = {"EXPERIENCE", "FRESHER", "INTERN"};
@@ -92,7 +102,8 @@ public class CandidateView {
 
     /**
      * Hiển thị danh sách kết quả tìm kiếm.
-     * @param candidates danh sách ứng viên cần hiển thị
+     * EN: Show the search results.
+     * @param candidates danh sách ứng viên cần hiển thị / candidate list to show
      */
     public void showSearchResults(List<Candidate> candidates) {
         if (candidates.isEmpty()) {

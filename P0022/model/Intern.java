@@ -7,16 +7,17 @@ public class Intern extends Candidate {
 
     /**
      * Khởi tạo đối tượng Intern với thông tin được cung cấp.
-     * @param id mã định danh
-     * @param firstName tên của ứng viên
-     * @param lastName họ của ứng viên
-     * @param birthYear năm sinh
-     * @param address địa chỉ
-     * @param phone số điện thoại
-     * @param email địa chỉ email
-     * @param majors chuyên ngành
-     * @param semester học kỳ
-     * @param universityName tên trường đại học
+     * EN: Create a Intern object with the given information.
+     * @param id mã định danh / ID
+     * @param firstName tên của ứng viên / first name
+     * @param lastName họ của ứng viên / last name
+     * @param birthYear năm sinh / birth year
+     * @param address địa chỉ / address
+     * @param phone số điện thoại / phone number
+     * @param email địa chỉ email / email address
+     * @param majors chuyên ngành / major
+     * @param semester học kỳ / semester
+     * @param universityName tên trường đại học / university name
      */
     public Intern(String id, String firstName, String lastName, int birthYear,
             String address, String phone, String email, String majors,
@@ -29,17 +30,20 @@ public class Intern extends Candidate {
 
     /**
      * Lấy chuyên ngành.
-     * @return chuyên ngành
+     * EN: Get the major.
+     * @return chuyên ngành / major
      */
     public String getMajors() { return majors; }
     /**
      * Lấy học kỳ.
-     * @return học kỳ
+     * EN: Get the semester.
+     * @return học kỳ / semester
      */
     public String getSemester() { return semester; }
     /**
      * Lấy tên trường đại học.
-     * @return tên trường đại học
+     * EN: Get the university name.
+     * @return tên trường đại học / university name
      */
     public String getUniversityName() { return universityName; }
 }

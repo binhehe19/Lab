@@ -5,7 +5,8 @@ import view.CandidateView;
 public class Main {
     /**
      * Khởi chạy chương trình quản lý bằng mô hình MVC.
-     * @param args tham số dòng lệnh
+     * EN: Start the management program using MVC.
+     * @param args tham số dòng lệnh / command-line arguments
      */
     public static void main(String[] args) {
         CandidateManager model = new CandidateManager();

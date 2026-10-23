@@ -13,8 +13,9 @@ public class CandidateController {
 
     /**
      * Khởi tạo đối tượng CandidateController với thông tin được cung cấp.
-     * @param model đối tượng quản lý dữ liệu
-     * @param view đối tượng giao diện nhập và xuất
+     * EN: Create a CandidateController object with the given information.
+     * @param model đối tượng quản lý dữ liệu / data manager
+     * @param view đối tượng giao diện nhập và xuất / view for input and output
      */
     public CandidateController(CandidateManager model, CandidateView view) {
         this.model = model;
@@ -23,6 +24,7 @@ public class CandidateController {
 
     /**
      * Hiển thị menu và xử lý chức năng được chọn cho đến khi thoát.
+     * EN: Show the menu and run the chosen action until exit.
      */
     public void run() {
         while (true) {
@@ -32,6 +34,7 @@ public class CandidateController {
                 case 2:
                 case 3:
                     // Lựa chọn menu 1, 2, 3 tương ứng với loại ứng viên 0, 1, 2.
+                    // EN: Menu choices 1, 2, 3 use candidate types 0, 1, 2.
                     createCandidate(choice - 1);
                     break;
                 case 4:
@@ -46,7 +49,8 @@ public class CandidateController {
 
     /**
      * Nhập thông tin chung và riêng, tạo ứng viên theo loại và lưu vào danh sách.
-     * @param type loại ứng viên: 0 là có kinh nghiệm, 1 là mới tốt nghiệp, 2 là thực tập sinh
+     * EN: Read all information, create a candidate of the chosen type and save it.
+     * @param type loại ứng viên: 0 là có kinh nghiệm, 1 là mới tốt nghiệp, 2 là thực tập sinh / candidate type: 0 for Experience, 1 for Fresher, 2 for Intern
      */
     public void createCandidate(int type) {
         do {
@@ -58,6 +62,7 @@ public class CandidateController {
             }
 
             // Bước 1: Nhập các thuộc tính chung của ứng viên.
+            // EN: Step 1: Enter the common candidate information.
             String firstName = view.getString("First name: ");
             String lastName = view.getString("Last name: ");
             int birthYear = view.getBirthYear();
@@ -66,6 +71,7 @@ public class CandidateController {
             String email = view.getEmail();
 
             // Bước 2: Nhập thuộc tính riêng và tạo đối tượng thuộc lớp con phù hợp.
+            // EN: Step 2: Enter extra information and create the right candidate type.
             Candidate candidate;
             if (type == 0) {
                 int expInYear = view.getInt("Years of experience: ", 0, 100);
@@ -87,6 +93,7 @@ public class CandidateController {
             }
 
             // Bước 3: Lưu ứng viên vào model và hỏi có tiếp tục hay không.
+            // EN: Step 3: Save the candidate and ask to continue.
             if (model.add(candidate)) {
                 view.showMessage("Candidate added successfully!");
             } else {
@@ -98,6 +105,7 @@ public class CandidateController {
 
     /**
      * Nhập từ khóa tên và loại ứng viên, sau đó hiển thị kết quả tìm kiếm.
+     * EN: Read a name keyword and candidate type, then show the search results.
      */
     public void searchCandidate() {
         view.showCandidates(model.getAll());

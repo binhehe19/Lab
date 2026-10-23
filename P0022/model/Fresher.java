@@ -7,16 +7,17 @@ public class Fresher extends Candidate {
 
     /**
      * Khởi tạo đối tượng Fresher với thông tin được cung cấp.
-     * @param id mã định danh
-     * @param firstName tên của ứng viên
-     * @param lastName họ của ứng viên
-     * @param birthYear năm sinh
-     * @param address địa chỉ
-     * @param phone số điện thoại
-     * @param email địa chỉ email
-     * @param graduationDate ngày tốt nghiệp
-     * @param graduationRank xếp loại tốt nghiệp
-     * @param education trường đào tạo
+     * EN: Create a Fresher object with the given information.
+     * @param id mã định danh / ID
+     * @param firstName tên của ứng viên / first name
+     * @param lastName họ của ứng viên / last name
+     * @param birthYear năm sinh / birth year
+     * @param address địa chỉ / address
+     * @param phone số điện thoại / phone number
+     * @param email địa chỉ email / email address
+     * @param graduationDate ngày tốt nghiệp / graduation date
+     * @param graduationRank xếp loại tốt nghiệp / graduation rank
+     * @param education trường đào tạo / school or university
      */
     public Fresher(String id, String firstName, String lastName, int birthYear,
             String address, String phone, String email, String graduationDate,
@@ -29,17 +30,20 @@ public class Fresher extends Candidate {
 
     /**
      * Lấy ngày tốt nghiệp.
-     * @return ngày tốt nghiệp
+     * EN: Get the graduation date.
+     * @return ngày tốt nghiệp / graduation date
      */
     public String getGraduationDate() { return graduationDate; }
     /**
      * Lấy xếp loại tốt nghiệp.
-     * @return xếp loại tốt nghiệp
+     * EN: Get the graduation rank.
+     * @return xếp loại tốt nghiệp / graduation rank
      */
     public String getGraduationRank() { return graduationRank; }
     /**
      * Lấy trường đào tạo.
-     * @return trường đào tạo
+     * EN: Get the school or university.
+     * @return trường đào tạo / school or university
      */
     public String getEducation() { return education; }
 }

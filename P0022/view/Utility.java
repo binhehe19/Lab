@@ -8,8 +8,9 @@ public class Utility {
 
     /**
      * Nhập chuỗi, loại bỏ khoảng trắng hai đầu và yêu cầu nhập lại nếu rỗng.
-     * @param message thông báo hiển thị hoặc hướng dẫn nhập
-     * @return chuỗi không rỗng đã loại bỏ khoảng trắng hai đầu
+     * EN: Read text, remove spaces at both ends and ask again if empty.
+     * @param message thông báo hiển thị hoặc hướng dẫn nhập / message or input prompt
+     * @return chuỗi không rỗng đã loại bỏ khoảng trắng hai đầu / non-empty text with spaces removed at both ends
      */
     public static String getString(String message) {
         while (true) {
@@ -24,10 +25,11 @@ public class Utility {
 
     /**
      * Nhập số nguyên và yêu cầu nhập lại cho đến khi nằm trong giới hạn.
-     * @param message thông báo hiển thị hoặc hướng dẫn nhập
-     * @param min giá trị nhỏ nhất được chấp nhận
-     * @param max giá trị lớn nhất được chấp nhận
-     * @return số nguyên trong khoảng từ min đến max, bao gồm hai đầu
+     * EN: Read a whole number. Ask again if it is outside the range.
+     * @param message thông báo hiển thị hoặc hướng dẫn nhập / message or input prompt
+     * @param min giá trị nhỏ nhất được chấp nhận / lowest allowed value
+     * @param max giá trị lớn nhất được chấp nhận / highest allowed value
+     * @return số nguyên trong khoảng từ min đến max, bao gồm hai đầu / whole number from min to max, including both limits
      */
     public static int getInt(String message, int min, int max) {
         while (true) {
@@ -45,10 +47,11 @@ public class Utility {
 
     /**
      * Nhập chuỗi và yêu cầu nhập lại cho đến khi khớp biểu thức chính quy.
-     * @param message thông báo hiển thị hoặc hướng dẫn nhập
-     * @param pattern biểu thức chính quy dùng để kiểm tra dữ liệu
-     * @param error thông báo khi dữ liệu không đúng định dạng
-     * @return chuỗi hợp lệ khớp với pattern
+     * EN: Read text again until it matches the pattern.
+     * @param message thông báo hiển thị hoặc hướng dẫn nhập / message or input prompt
+     * @param pattern biểu thức chính quy dùng để kiểm tra dữ liệu / pattern used to check input
+     * @param error thông báo khi dữ liệu không đúng định dạng / error message for the wrong format
+     * @return chuỗi hợp lệ khớp với pattern / valid text that matches the pattern
      */
     public static String getPattern(String message, String pattern, String error) {
         while (true) {
@@ -62,8 +65,9 @@ public class Utility {
 
     /**
      * Nhập năm sinh gồm 4 chữ số, từ 1900 đến năm hiện tại.
-     * @param message thông báo hiển thị hoặc hướng dẫn nhập
-     * @return năm sinh hợp lệ
+     * EN: Read a four-digit birth year from 1900 to the current year.
+     * @param message thông báo hiển thị hoặc hướng dẫn nhập / message or input prompt
+     * @return năm sinh hợp lệ / valid birth year
      */
     public static int getBirthYear(String message) {
         int currentYear = Year.now().getValue();
@@ -79,8 +83,9 @@ public class Utility {
 
     /**
      * Nhập xếp loại tốt nghiệp: Excellence, Good, Fair hoặc Poor.
-     * @param message thông báo hiển thị hoặc hướng dẫn nhập
-     * @return xếp loại hợp lệ đã được chuẩn hóa
+     * EN: Read a graduation rank: Excellence, Good, Fair or Poor.
+     * @param message thông báo hiển thị hoặc hướng dẫn nhập / message or input prompt
+     * @return xếp loại hợp lệ đã được chuẩn hóa / valid rank in the standard spelling
      */
     public static String getRank(String message) {
         String[] ranks = {"Excellence", "Good", "Fair", "Poor"};
@@ -97,8 +102,9 @@ public class Utility {
 
     /**
      * Nhập lựa chọn Y hoặc N, không phân biệt chữ hoa và chữ thường.
-     * @param message thông báo hiển thị hoặc hướng dẫn nhập
-     * @return true nếu chọn Y; false nếu chọn N
+     * EN: Read Y or N. Accept both upper and lower case.
+     * @param message thông báo hiển thị hoặc hướng dẫn nhập / message or input prompt
+     * @return true nếu chọn Y; false nếu chọn N / true for Y, false for N
      */
     public static boolean getYesNo(String message) {
         while (true) {
