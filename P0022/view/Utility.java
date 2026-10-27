@@ -107,11 +107,15 @@ public class Utility {
      * @return true nếu chọn Y; false nếu chọn N / true for Y, false for N
      */
     public static boolean getYesNo(String message) {
-        while (true) {
-            String value = getString(message + " (Y/N)? ");
-            if (value.equalsIgnoreCase("Y")) return true;
-            if (value.equalsIgnoreCase("N")) return false;
-            System.out.println("Please enter Y or N!");
-        }
+        String value;
+        boolean valid;
+        do {
+            value = getString(message + " (Y/N)? ");
+            valid = value.equalsIgnoreCase("Y") || value.equalsIgnoreCase("N");
+            if (!valid) {
+                System.out.println("Please enter Y or N!");
+            }
+        } while (!valid);
+        return value.equalsIgnoreCase("Y");
     }
 }

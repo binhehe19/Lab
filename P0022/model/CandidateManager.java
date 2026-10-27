@@ -16,12 +16,14 @@ public class CandidateManager {
      * @return true nếu mã đã tồn tại; false nếu chưa tồn tại / true if the ID exists, otherwise false
      */
     public boolean containsId(String id) {
+        boolean found = false;
         for (Candidate candidate : candidates) {
             if (candidate.getId().equalsIgnoreCase(id)) {
-                return true;
+                found = true;
+                break;
             }
         }
-        return false;
+        return found;
     }
 
     /**
@@ -31,11 +33,11 @@ public class CandidateManager {
      * @return true nếu thêm thành công; false nếu mã đã tồn tại / true if added, false if the ID already exists
      */
     public boolean add(Candidate candidate) {
-        if (containsId(candidate.getId())) {
-            return false;
+        boolean added = false;
+        if (!containsId(candidate.getId())) {
+            added = candidates.add(candidate);
         }
-        candidates.add(candidate);
-        return true;
+        return added;
     }
 
     /**
